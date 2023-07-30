@@ -4,6 +4,7 @@
     <Page id="page" title="{i18n>title}">
         <content>
             <Label text="I am OK.." />
+            <Label text=" CI CD Source " />
         </content>
     </Page>
 </mvc:View>
