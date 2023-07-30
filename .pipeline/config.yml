@@ -20,15 +20,23 @@ steps:
   mtaBuild:
     platform: 'CF'
   
+  # cloudFoundryDeploy:
+  #   deployTool: 'mtaDeployPlugin'
+  #   deployType: 'standard'
+  #   cloudFoundry:
+  #     org: '<your-organisation>'
+  #     space: '<your-space>'
+  #     credentialsId: 'CF_CREDENTIALSID'
+
   cloudFoundryDeploy:
-    credentialsId: 'CF-jenkins-credentials-id'
+    credentialsId: 'CF'
     apiEndpoint: 'https://api.cf.us10-001.hana.ondemand.com'
     org: '96468441trial'
     space: 'dev'
     mtaDeployParameters: '-f --version-rule ALL'
-    mtaExtensionDescriptor: '../trial-cicd.mtaext'
-    mtaExtensionCredentials: 
-      susaas-sb-credentials: susaas-sb-credentials
+    # mtaExtensionDescriptor: '../trial-cicd.mtaext'
+    # mtaExtensionCredentials: 
+    #   susaas-sb-credentials: susaas-sb-credentials
     
 
 # tmsUpload:  # only relevant once you finish the SAP Cloud Transport Management Expert Scope chapter
