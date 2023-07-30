@@ -29,7 +29,7 @@ steps:
   #     credentialsId: 'CF_CREDENTIALSID'
 
   cloudFoundryDeploy:
-    credentialsId: 'CF'
+    credentialsId: 'cf'
     apiEndpoint: 'https://api.cf.us10-001.hana.ondemand.com'
     org: '96468441trial'
     space: 'dev'
