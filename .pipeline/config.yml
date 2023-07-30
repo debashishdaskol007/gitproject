@@ -10,8 +10,31 @@ stages:
   Additional Unit Tests:
     karmaExecuteTests: false
 
+  Malware Scan: 
+    malwareExecuteScan: true
+
+  Acceptance:
+    cloudFoundryDeploy: true                                               # true, if you want to deploy to Cloud Foundry test space (default: false)
+    cfApiEndpoint: "https://api.cf.us10-001.hana.ondemand.com" 
+    cfOrg: "96468441trial"
+    cfSpace: "dev"                               
+    cfCredentialsId: "cf"
+    deployType: "standard"
+    npmExecuteEndToEndTests: true                                          # true, if you want to execute end-to-end acceptance tests using WebdriverIO (default: false)
+
+  Compliance:
+      sonarExecuteScan: false 
+
   Release:
-    cloudFoundryDeploy: true
+    cloudFoundryDeploy: true                                     # true, if you want to deploy to Cloud Foundry (default: false)
+    cfApiEndpoint: "https://api.cf.us10-001.hana.ondemand.com"   # for example, https://api.cf.eu10.hana.ondemand.com
+    cfOrg: "96468441trial"
+    cfSpace: "dev"                             # enter the Cloud Foundry space, to which you want to deploy your application
+    cfAppName: "gitproject"
+    deployType: "standard"   
+    cfCredentialsId: "cf"
+    tmsUpload: false                                                           # true, if you want to upload your artifact to SAP Cloud Transport Management
+
 
 steps:
   npmExecuteLint:
@@ -28,15 +51,8 @@ steps:
   #     space: '<your-space>'
   #     credentialsId: 'CF_CREDENTIALSID'
 
-  cloudFoundryDeploy:
-    credentialsId: 'cf'
-    apiEndpoint: 'https://api.cf.us10-001.hana.ondemand.com'
-    org: '96468441trial'
-    space: 'dev'
-    mtaDeployParameters: '-f --version-rule ALL'
-    # mtaExtensionDescriptor: '../trial-cicd.mtaext'
-    # mtaExtensionCredentials: 
-    #   susaas-sb-credentials: susaas-sb-credentials
+  cloudFoundryDeploy:                                                                      # only relevant, if you set the cloudFoundryDeploy parameter in the Release stage to true 
+    mtaDeployParameters: "-f --version-rule ALL"
     
 
 # tmsUpload:  # only relevant once you finish the SAP Cloud Transport Management Expert Scope chapter
