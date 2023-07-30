@@ -33,7 +33,7 @@ stages:
     cfAppName: "gitproject"
     deployType: "standard"   
     cfCredentialsId: "cf"
-    tmsUpload: false                                                           # true, if you want to upload your artifact to SAP Cloud Transport Management
+    tmsUpload: true                                                           # true, if you want to upload your artifact to SAP Cloud Transport Management
 
 
 steps:
@@ -53,6 +53,11 @@ steps:
 
   cloudFoundryDeploy:                                                                      # only relevant, if you set the cloudFoundryDeploy parameter in the Release stage to true 
     mtaDeployParameters: "-f --version-rule ALL"
+
+  tmsUpload:                                                                               # only relevant, if you set the tmsUpload parameter in the Release stage to true
+    nodeName: "DEV"
+    credentialsId: "tms-sk"
+    customDescription: 'TMS Upload'
     
 
 # tmsUpload:  # only relevant once you finish the SAP Cloud Transport Management Expert Scope chapter
